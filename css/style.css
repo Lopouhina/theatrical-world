@@ -1,0 +1,263 @@
+
+/* 1. CSS-переменные */
+
+:root {
+    --color-primary: #541c2b;
+    --color-primary-light: #8b4350;
+    --color-background: #faf6f1;
+    --color-white: #ffffff;
+    --color-text: #302020;
+    --color-muted: #777777;
+    --color-gold: #e9c58e;
+    --color-gold-hover: #f5d9a9;
+
+    --space-sm: 10px;
+    --space-md: 20px;
+    --space-lg: 30px;
+    --space-xl: 60px;
+
+    --radius-sm: 6px;
+    --radius-md: 12px;
+}
+
+/* 2. Базовые стили */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 3. Шапка сайта */
+
+.site-header {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.site-header__container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 25px 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+}
+
+.site-header__logo {
+    color: var(--color-white);
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/* 4. Навигация — Flexbox */
+
+.site-nav__list {
+    list-style: none;
+
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.site-nav__link {
+    color: var(--color-white);
+    font-size: 15px;
+    transition: color 0.3s ease;
+}
+
+.site-nav__link:hover,
+.site-nav__link--active {
+    color: var(--color-gold);
+}
+
+/* 5. Приветственный блок */
+
+.hero {
+    background: linear-gradient(
+        135deg,
+        var(--color-primary),
+        var(--color-primary-light)
+    );
+
+    color: var(--color-white);
+    text-align: center;
+    padding: 110px var(--space-md);
+}
+
+.hero__content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero__title {
+    font-size: 44px;
+    margin-bottom: var(--space-md);
+}
+
+.hero__description {
+    font-size: 18px;
+    margin-bottom: 35px;
+}
+
+/* 6. Кнопки */
+
+.button {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: var(--radius-sm);
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.button--gold {
+    background-color: var(--color-gold);
+    color: var(--color-primary);
+}
+
+.button--gold:hover {
+    background-color: var(--color-gold-hover);
+}
+
+.button--primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.button--primary:hover {
+    background-color: var(--color-primary-light);
+}
+
+/* 7. Состояния фокуса */
+
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--color-gold);
+    outline-offset: 4px;
+}
+
+/* 8. Раздел спектаклей */
+
+.performances {
+    padding: var(--space-xl) 0;
+}
+
+.performances__title {
+    font-size: 30px;
+    margin-bottom: var(--space-lg);
+    color: var(--color-primary);
+}
+
+/* 9. Сетка карточек — CSS Grid */
+
+.performances__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-lg);
+}
+
+/* 10. Карточка спектакля */
+
+.performance-card {
+    background-color: var(--color-white);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.performance-card:hover {
+    transform: translateY(-7px);
+}
+
+.performance-card__image {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    display: block;
+}
+
+.performance-card__content {
+    padding: 22px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-grow: 1;
+}
+
+.performance-card__title {
+    font-size: 22px;
+    margin-bottom: var(--space-sm);
+    color: var(--color-primary);
+}
+
+.performance-card__genre {
+    color: var(--color-muted);
+    margin-bottom: var(--space-md);
+}
+
+.performance-card__content .button {
+    margin-top: auto;
+}
+
+/* 11. Подвал */
+
+.site-footer {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    text-align: center;
+    padding: 25px;
+}
+
+/* 12. Адаптация под ширину экрана */
+
+@media (max-width: 900px) {
+    .performances__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .hero__title {
+        font-size: 32px;
+    }
+
+    .site-header__container {
+        justify-content: center;
+    }
+
+    .site-nav__list {
+        justify-content: center;
+    }
+
+    .performances__grid {
+        grid-template-columns: 1fr;
+    }
+}
