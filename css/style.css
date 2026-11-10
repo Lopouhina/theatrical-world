@@ -551,3 +551,129 @@ button:focus-visible {
         font-size: 30px;
     }
 }
+
+
+/* Страница актёров */
+
+.actors-page {
+    padding: 35px 0 80px;
+}
+
+.actors-page__title {
+    font-size: 38px;
+    color: var(--color-primary);
+    margin-bottom: 12px;
+}
+
+.actors-page__description {
+    font-size: 17px;
+    color: var(--color-muted);
+    margin-bottom: 40px;
+}
+
+.actors-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+}
+
+.actor-card {
+    display: flex;
+    background-color: var(--color-white);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+    transition: transform 0.3s ease;
+}
+
+.actor-card:hover {
+    transform: translateY(-5px);
+}
+
+.actor-card__portrait {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 155px;
+    background: linear-gradient(
+        145deg,
+        var(--color-primary),
+        var(--color-primary-light)
+    );
+    color: var(--color-gold);
+    font-size: 38px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.actor-card__content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 25px;
+}
+
+.actor-card__name {
+    font-size: 23px;
+    color: var(--color-primary);
+}
+
+.actor-card__years {
+    font-size: 14px;
+    color: var(--color-muted);
+}
+
+.actor-card__description {
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.actor-card__theater {
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid #eadfdb;
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--color-primary-light);
+}
+
+.actors-page__bottom {
+    margin-top: 55px;
+    padding: 45px 25px;
+    border-radius: var(--radius-md);
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    text-align: center;
+}
+
+.actors-page__bottom h2 {
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.actors-page__bottom p {
+    margin-bottom: 25px;
+}
+
+/* Адаптивность */
+
+@media (max-width: 950px) {
+    .actors-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 550px) {
+    .actors-page__title {
+        font-size: 30px;
+    }
+
+    .actor-card {
+        flex-direction: column;
+    }
+
+    .actor-card__portrait {
+        flex-basis: auto;
+        min-height: 150px;
+    }
+}
