@@ -68,9 +68,11 @@ theatrical-world/
 - Добавлены карточки популярных спектаклей.
 - Использованы Flexbox, CSS Grid и БЭМ.
 
-## Запуск проекта
+## Ссылка на сайт
 
-Открыть файл `index.html` в браузере или запустить проект через расширение Live Server в Visual Studio Code.
+Сайт опубликован с помощью GitHub Pages.
+
+https://lopouhina.github.io/theatrical-world/
 
 ## Публикация
 
