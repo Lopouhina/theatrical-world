@@ -16,18 +16,36 @@ const reviewsFilter = document.getElementById("reviews-filter");
 const reviewsCount = document.getElementById("reviews-count");
 const reviewsEmpty = document.getElementById("reviews-empty");
 const reviewMessage = document.getElementById("review-message");
+const reviewPerformance = document.getElementById("review-performance");
 
 function getReviews() {
     try {
-        const saved = JSON.parse(localStorage.getItem(REVIEWS_KEY) || "[]");
-        return Array.isArray(saved) ? saved : [];
+        const saved = JSON.parse(
+            localStorage.getItem(REVIEWS_KEY) || "[]"
+        );
+
+        return Array.isArray(saved)
+            ? saved.filter(review =>
+                review &&
+                typeof review.id === "string" &&
+                typeof review.name === "string" &&
+                typeof review.text === "string" &&
+                performanceNames[review.performance] &&
+                Number.isInteger(review.rating) &&
+                review.rating >= 1 &&
+                review.rating <= 5
+            )
+            : [];
     } catch {
         return [];
     }
 }
 
 function saveReviews(reviews) {
-    localStorage.setItem(REVIEWS_KEY, JSON.stringify(reviews));
+    localStorage.setItem(
+        REVIEWS_KEY,
+        JSON.stringify(reviews)
+    );
 }
 
 function getReviewWord(count) {
@@ -59,17 +77,27 @@ function createReviewCard(review) {
 
     const date = document.createElement("span");
     date.className = "review-card__date";
-    date.textContent = new Date(review.date).toLocaleDateString("ru-RU");
+
+    const reviewDate = new Date(review.date);
+    date.textContent = Number.isNaN(reviewDate.getTime())
+        ? ""
+        : reviewDate.toLocaleDateString("ru-RU");
 
     header.append(name, date);
 
-    const performance = document.createElement("p");
+    const performance = document.createElement("a");
     performance.className = "review-card__performance";
-    performance.textContent = performanceNames[review.performance] || "Спектакль";
+    performance.href =
+        `performance.html?id=${encodeURIComponent(review.performance)}`;
+
+    performance.textContent =
+        performanceNames[review.performance];
 
     const rating = document.createElement("p");
     rating.className = "review-card__rating";
-    rating.textContent = "★".repeat(review.rating) + "☆".repeat(5 - review.rating);
+    rating.textContent =
+        "★".repeat(review.rating) +
+        "☆".repeat(5 - review.rating);
 
     const text = document.createElement("p");
     text.className = "review-card__text";
@@ -81,14 +109,26 @@ function createReviewCard(review) {
     deleteButton.textContent = "Удалить отзыв";
 
     deleteButton.addEventListener("click", () => {
-        if (!confirm("Удалить этот отзыв?")) return;
+        if (!confirm("Удалить этот отзыв?")) {
+            return;
+        }
 
-        const reviews = getReviews().filter(item => item.id !== review.id);
+        const reviews = getReviews().filter(
+            item => item.id !== review.id
+        );
+
         saveReviews(reviews);
         renderReviews();
+        reviewMessage.textContent = "Отзыв удалён.";
     });
 
-    card.append(header, performance, rating, text, deleteButton);
+    card.append(
+        header,
+        performance,
+        rating,
+        text,
+        deleteButton
+    );
 
     return card;
 }
@@ -98,7 +138,9 @@ function renderReviews() {
     const selectedPerformance = reviewsFilter.value;
 
     const filtered = selectedPerformance
-        ? reviews.filter(review => review.performance === selectedPerformance)
+        ? reviews.filter(
+            review => review.performance === selectedPerformance
+        )
         : reviews;
 
     reviewsContainer.replaceChildren();
@@ -119,22 +161,33 @@ function renderReviews() {
 reviewForm.addEventListener("submit", event => {
     event.preventDefault();
 
-    if (!reviewForm.reportValidity()) return;
+    if (!reviewForm.reportValidity()) {
+        return;
+    }
 
     const name = document.getElementById("review-name").value.trim();
-    const performance = document.getElementById("review-performance").value;
+    const performance = reviewPerformance.value;
     const text = document.getElementById("review-text").value.trim();
+
     const ratingInput = document.querySelector(
         'input[name="rating"]:checked'
     );
 
-    if (!name || !performance || !ratingInput || text.length < 10) {
-        reviewMessage.textContent = "Пожалуйста, заполните все поля.";
+    if (
+        !name ||
+        !performanceNames[performance] ||
+        !ratingInput ||
+        text.length < 10
+    ) {
+        reviewMessage.textContent =
+            "Пожалуйста, корректно заполните все поля.";
         return;
     }
 
     const review = {
-        id: crypto.randomUUID(),
+        id: typeof crypto.randomUUID === "function"
+            ? crypto.randomUUID()
+            : `${Date.now()}-${Math.random().toString(36).slice(2)}`,
         name,
         performance,
         rating: Number(ratingInput.value),
@@ -144,11 +197,22 @@ reviewForm.addEventListener("submit", event => {
 
     const reviews = getReviews();
     reviews.push(review);
-    saveReviews(reviews);
+
+    try {
+        saveReviews(reviews);
+    } catch {
+        reviewMessage.textContent =
+            "Не удалось сохранить отзыв. Проверьте настройки браузера.";
+        return;
+    }
 
     reviewForm.reset();
-    reviewsFilter.value = "";
-    reviewMessage.textContent = "Ваш отзыв успешно опубликован!";
+
+    reviewPerformance.value = performance;
+    reviewsFilter.value = performance;
+
+    reviewMessage.textContent =
+        "Ваш отзыв успешно опубликован!";
 
     renderReviews();
 });
@@ -159,7 +223,7 @@ const params = new URLSearchParams(window.location.search);
 const performanceId = params.get("performance");
 
 if (performanceNames[performanceId]) {
-    document.getElementById("review-performance").value = performanceId;
+    reviewPerformance.value = performanceId;
     reviewsFilter.value = performanceId;
 }
 
