@@ -677,3 +677,163 @@ button:focus-visible {
         min-height: 150px;
     }
 }
+
+/* Страница спектакля */
+
+.performance-page {
+    padding: 35px 0 80px;
+}
+
+.performance-page__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
+    gap: 50px;
+    align-items: start;
+    margin-top: 30px;
+}
+
+.performance-page__poster {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.performance-page__image {
+    display: block;
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+.performance-page__info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+}
+
+.performance-page__category {
+    background-color: var(--color-gold);
+    color: var(--color-primary);
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.performance-page__title {
+    font-size: 44px;
+    line-height: 1.2;
+    color: var(--color-primary);
+}
+
+.performance-page__description {
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--color-muted);
+}
+
+.performance-page__metadata {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    width: 100%;
+    padding: 25px;
+    background-color: var(--color-white);
+    border-radius: var(--radius-md);
+}
+
+.performance-page__meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.performance-page__meta-item span {
+    font-size: 13px;
+    color: var(--color-muted);
+}
+
+.performance-page__meta-item strong {
+    font-size: 16px;
+    color: var(--color-primary);
+}
+
+.performance-page__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.performance-page__about,
+.performance-page__reviews {
+    margin-top: 55px;
+    padding: 35px;
+    background-color: var(--color-white);
+    border-radius: var(--radius-md);
+}
+
+.performance-page__about h2,
+.performance-page__reviews h2 {
+    color: var(--color-primary);
+    font-size: 27px;
+    margin-bottom: 20px;
+}
+
+.performance-page__about p,
+.performance-page__reviews p {
+    line-height: 1.9;
+    color: var(--color-text);
+}
+
+.performance-page__reviews-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+.performance-page__reviews-link:hover {
+    text-decoration: underline;
+}
+
+.performance-page__not-found {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 70px 20px;
+}
+
+.performance-page__not-found h1 {
+    color: var(--color-primary);
+    margin-bottom: 15px;
+}
+
+.performance-page__not-found p {
+    margin-bottom: 25px;
+}
+
+@media (max-width: 800px) {
+    .performance-page__layout {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .performance-page__poster {
+        max-width: 450px;
+    }
+
+    .performance-page__title {
+        font-size: 34px;
+    }
+}
+
+@media (max-width: 500px) {
+    .performance-page__metadata {
+        grid-template-columns: 1fr;
+    }
+
+    .performance-page__about,
+    .performance-page__reviews {
+        padding: 22px;
+    }
+}
