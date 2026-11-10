@@ -456,3 +456,98 @@ button:focus-visible {
         flex-wrap: wrap;
     }
 }
+
+
+/* Страница жанров */
+
+.genres-page {
+    padding: 35px 0 80px;
+}
+
+.genres-page__title {
+    font-size: 38px;
+    color: var(--color-primary);
+    margin-bottom: 12px;
+}
+
+.genres-page__description {
+    font-size: 17px;
+    color: var(--color-muted);
+    margin-bottom: 40px;
+    max-width: 650px;
+}
+
+.genres-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.genre-card {
+    background-color: var(--color-white);
+    border: 1px solid #eadfdb;
+    border-radius: var(--radius-md);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.genre-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(84, 28, 43, 0.12);
+}
+
+.genre-card__content {
+    padding: 30px;
+    min-height: 290px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.genre-card__number {
+    color: var(--color-primary-light);
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.genre-card__title {
+    font-size: 28px;
+    color: var(--color-primary);
+    margin-bottom: 15px;
+}
+
+.genre-card__description {
+    color: var(--color-muted);
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.genre-card__link {
+    margin-top: auto;
+    color: var(--color-primary);
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.genre-card__link:hover {
+    color: var(--color-primary-light);
+}
+
+@media (max-width: 950px) {
+    .genres-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .genres-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .genres-page__title {
+        font-size: 30px;
+    }
+}
