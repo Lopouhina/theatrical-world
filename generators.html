@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Подбор театральных спектаклей по настроению и случайный выбор постановки.">
+    <title>Подбор спектакля — Театральный мир</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/favorites.js" defer></script>
+    <script src="js/generators.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="site-header__container">
+        <a href="index.html" class="site-header__logo">Театральный мир</a>
+
+        <nav class="site-nav" aria-label="Основная навигация">
+            <ul class="site-nav__list">
+                <li class="site-nav__item">
+                    <a href="index.html" class="site-nav__link">Главная</a>
+                </li>
+                <li class="site-nav__item">
+                    <a href="catalog.html" class="site-nav__link">Спектакли</a>
+                </li>
+                <li class="site-nav__item">
+                    <a href="genres.html" class="site-nav__link">Жанры</a>
+                </li>
+                <li class="site-nav__item">
+                    <a href="actors.html" class="site-nav__link">Актёры</a>
+                </li>
+                <li class="site-nav__item">
+                    <a href="favorites.html" class="site-nav__link">Избранное</a>
+                </li>
+                <li class="site-nav__item">
+                    <a href="reviews.html" class="site-nav__link">Отзывы</a>
+                </li>
+                <li class="site-nav__item">
+                    <a href="generators.html"
+                       class="site-nav__link site-nav__link--active"
+                       aria-current="page">Подбор спектакля</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="generators-page">
+    <div class="container">
+
+        <nav class="breadcrumbs" aria-label="Навигационная цепочка">
+            <a href="index.html">Главная</a>
+            <span aria-hidden="true">/</span>
+            <span>Подбор спектакля</span>
+        </nav>
+
+        <div class="generators-page__intro">
+            <h1 class="generators-page__title">Какой спектакль посмотреть?</h1>
+            <p class="generators-page__description">
+                Не можете определиться с выбором?
+                Доверьтесь случаю или выберите спектакль под своё настроение.
+            </p>
+        </div>
+
+        <div class="generators-page__layout">
+
+            <section class="generator-panel">
+                <div class="generator-panel__heading">
+                    <span class="generator-panel__number">01</span>
+                    <h2 class="generator-panel__title">Случайный спектакль</h2>
+                </div>
+
+                <p class="generator-panel__description">
+                    Нажмите кнопку, и мы случайным образом выберем
+                    для вас один из спектаклей нашего каталога.
+                </p>
+
+                <button
+                    type="button"
+                    class="button button--primary generator-panel__button"
+                    id="random-button">
+                    Выбрать случайный спектакль
+                </button>
+
+                <div
+                    class="generator-panel__result"
+                    id="random-result"
+                    aria-live="polite">
+                </div>
+            </section>
+
+            <section class="generator-panel">
+                <div class="generator-panel__heading">
+                    <span class="generator-panel__number">02</span>
+                    <h2 class="generator-panel__title">Подбор по настроению</h2>
+                </div>
+
+                <p class="generator-panel__description">
+                    Выберите настроение, а мы предложим
+                    спектакль, который может вам подойти.
+                </p>
+
+                <div class="generator-panel__field">
+                    <label for="mood-select">Какое у вас сегодня настроение?</label>
+
+                    <select id="mood-select" class="generator-panel__select">
+                        <option value="">Выберите настроение</option>
+                        <option value="romantic">Хочется романтики</option>
+                        <option value="funny">Хочется посмеяться</option>
+                        <option value="thoughtful">Хочется задуматься</option>
+                        <option value="magical">Хочется волшебства</option>
+                        <option value="dramatic">Хочется сильных эмоций</option>
+                    </select>
+                </div>
+
+                <button
+                    type="button"
+                    class="button button--primary generator-panel__button"
+                    id="mood-button">
+                    Подобрать спектакль
+                </button>
+
+                <p
+                    id="mood-message"
+                    class="generator-panel__message"
+                    role="status">
+                </p>
+
+                <div
+                    class="generator-panel__result"
+                    id="mood-result"
+                    aria-live="polite">
+                </div>
+            </section>
+
+        </div>
+
+        <section class="generators-page__bottom">
+            <h2>Хотите выбрать самостоятельно?</h2>
+            <p>
+                Посмотрите весь каталог и найдите спектакль,
+                который заинтересует именно вас.
+            </p>
+            <a href="catalog.html" class="button button--gold">
+                Перейти в каталог
+            </a>
+        </section>
+
+    </div>
+</main>
+
+<footer class="site-footer">
+    <p class="site-footer__text">© 2026 Театральный мир</p>
+</footer>
+
+</body>
+</html>
