@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Информация о театральных спектаклях.">
+    <meta name="description" content="Информация о театральных спектаклях">
     <title>Спектакль — Театральный мир</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/favorites.js" defer></script>
@@ -47,8 +47,7 @@
                     id="performance-image"
                     src=""
                     alt=""
-                    class="performance-page__image"
-                >
+                    class="performance-page__image">
             </div>
 
             <div class="performance-page__info">
@@ -103,7 +102,6 @@
                     </button>
 
                 </div>
-
             </div>
         </div>
 
@@ -113,14 +111,34 @@
         </section>
 
         <section class="performance-page__reviews">
-            <h2>Отзывы зрителей</h2>
-            <p>
-                Здесь будут отображаться отзывы и оценки пользователей.
-                Функциональность добавим на следующем этапе.
+            <div class="performance-reviews__header">
+                <div>
+                    <h2>Отзывы зрителей</h2>
+                    <p id="performance-reviews-summary">
+                        Отзывы о спектакле
+                    </p>
+                </div>
+
+                <a
+                    id="performance-reviews-link"
+                    href="reviews.html"
+                    class="button button--primary">
+                    Оставить отзыв
+                </a>
+            </div>
+
+            <div
+                id="performance-reviews-list"
+                class="performance-reviews__list">
+            </div>
+
+            <p
+                id="performance-reviews-empty"
+                class="performance-reviews__empty"
+                hidden>
+                Пока никто не оставил отзыв об этом спектакле.
+                Вы можете стать первым!
             </p>
-            <a href="reviews.html" class="performance-page__reviews-link">
-                Перейти к отзывам
-            </a>
         </section>
 
     </div>

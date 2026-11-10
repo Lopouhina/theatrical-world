@@ -73,9 +73,111 @@ const performances = {
     }
 };
 
+const REVIEWS_KEY = "theatrical-world-reviews";
+
 const params = new URLSearchParams(window.location.search);
 const performanceId = params.get("id");
 const performance = performances[performanceId];
+
+function getPerformanceReviews(id) {
+    try {
+        const saved = JSON.parse(
+            localStorage.getItem(REVIEWS_KEY) || "[]"
+        );
+
+        if (!Array.isArray(saved)) {
+            return [];
+        }
+
+        return saved.filter(review =>
+            review &&
+            review.performance === id &&
+            Number.isInteger(review.rating) &&
+            review.rating >= 1 &&
+            review.rating <= 5
+        );
+    } catch {
+        return [];
+    }
+}
+
+function createPerformanceReview(review) {
+    const card = document.createElement("article");
+    card.className = "review-card";
+
+    const header = document.createElement("div");
+    header.className = "review-card__header";
+
+    const name = document.createElement("h3");
+    name.className = "review-card__name";
+    name.textContent = review.name;
+
+    const date = document.createElement("span");
+    date.className = "review-card__date";
+
+    const reviewDate = new Date(review.date);
+    date.textContent = Number.isNaN(reviewDate.getTime())
+        ? ""
+        : reviewDate.toLocaleDateString("ru-RU");
+
+    header.append(name, date);
+
+    const rating = document.createElement("p");
+    rating.className = "review-card__rating";
+    rating.textContent =
+        "★".repeat(review.rating) +
+        "☆".repeat(5 - review.rating);
+
+    const text = document.createElement("p");
+    text.className = "review-card__text";
+    text.textContent = review.text;
+
+    card.append(header, rating, text);
+
+    return card;
+}
+
+function renderPerformanceReviews(id) {
+    const reviews = getPerformanceReviews(id);
+
+    const list = document.getElementById(
+        "performance-reviews-list"
+    );
+
+    const summary = document.getElementById(
+        "performance-reviews-summary"
+    );
+
+    const empty = document.getElementById(
+        "performance-reviews-empty"
+    );
+
+    list.replaceChildren();
+
+    empty.hidden = reviews.length > 0;
+
+    if (reviews.length === 0) {
+        summary.textContent = "Отзывов пока нет";
+        return;
+    }
+
+    const totalRating = reviews.reduce(
+        (sum, review) => sum + review.rating,
+        0
+    );
+
+    const averageRating = totalRating / reviews.length;
+
+    summary.textContent =
+        `Средняя оценка: ${averageRating.toFixed(1)} из 5 · Отзывов: ${reviews.length}`;
+
+    reviews
+        .slice()
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .forEach(review => {
+            list.append(createPerformanceReview(review));
+        });
+}
 
 if (performance) {
     document.title = `${performance.title} — Театральный мир`;
@@ -117,7 +219,14 @@ if (performance) {
 
     favoriteButton.dataset.favoriteId = performanceId;
 
-    updateFavoriteButtons();
+    if (typeof updateFavoriteButtons === "function") {
+        updateFavoriteButtons();
+    }
+
+    document.getElementById("performance-reviews-link").href =
+        `reviews.html?performance=${encodeURIComponent(performanceId)}`;
+
+    renderPerformanceReviews(performanceId);
 
 } else {
     document.getElementById("performance-details").innerHTML = `
@@ -133,3 +242,15 @@ if (performance) {
     document.querySelector(".performance-page__about").hidden = true;
     document.querySelector(".performance-page__reviews").hidden = true;
 }
+
+window.addEventListener("pageshow", () => {
+    if (performance) {
+        renderPerformanceReviews(performanceId);
+    }
+});
+
+window.addEventListener("storage", event => {
+    if (event.key === REVIEWS_KEY && performance) {
+        renderPerformanceReviews(performanceId);
+    }
+});
