@@ -4,70 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-          content="Каталог спектаклей: драмы, комедии, балет, опера и мюзиклы.">
+    <meta name="description" content="Каталог театральных спектаклей">
     <title>Каталог спектаклей — Театральный мир</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/favorites.js" defer></script>
 </head>
-
 <body>
 
 <header class="site-header">
     <div class="site-header__container">
-
-        <a href="index.html" class="site-header__logo">
-            Театральный мир
-        </a>
-
+        <a href="index.html" class="site-header__logo">Театральный мир</a>
         <nav class="site-nav" aria-label="Основная навигация">
             <ul class="site-nav__list">
-                <li class="site-nav__item">
-                    <a href="index.html" class="site-nav__link">
-                        Главная
-                    </a>
-                </li>
-
-                <li class="site-nav__item">
-                    <a href="catalog.html"
-                       class="site-nav__link site-nav__link--active"
-                       aria-current="page">
-                        Спектакли
-                    </a>
-                </li>
-
-                <li class="site-nav__item">
-                    <a href="genres.html" class="site-nav__link">
-                        Жанры
-                    </a>
-                </li>
-
-                <li class="site-nav__item">
-                    <a href="actors.html" class="site-nav__link">
-                        Актёры
-                    </a>
-                </li>
-
-                <li class="site-nav__item">
-                    <a href="favorites.html" class="site-nav__link">
-                        Избранное
-                    </a>
-                </li>
-
-                <li class="site-nav__item">
-                    <a href="reviews.html" class="site-nav__link">
-                        Отзывы
-                    </a>
-                </li>
+                <li class="site-nav__item"><a href="index.html" class="site-nav__link">Главная</a></li>
+                <li class="site-nav__item"><a href="catalog.html" class="site-nav__link site-nav__link--active" aria-current="page">Спектакли</a></li>
+                <li class="site-nav__item"><a href="genres.html" class="site-nav__link">Жанры</a></li>
+                <li class="site-nav__item"><a href="actors.html" class="site-nav__link">Актёры</a></li>
+                <li class="site-nav__item"><a href="favorites.html" class="site-nav__link">Избранное</a></li>
+                <li class="site-nav__item"><a href="reviews.html" class="site-nav__link">Отзывы</a></li>
             </ul>
         </nav>
-
     </div>
 </header>
 
 <main class="catalog">
-
     <div class="container">
-
         <nav class="breadcrumbs" aria-label="Навигационная цепочка">
             <a href="index.html">Главная</a>
             <span aria-hidden="true">/</span>
@@ -75,41 +36,21 @@
         </nav>
 
         <h1 class="catalog__title">Каталог спектаклей</h1>
-
-        <p class="catalog__description">
-            Найдите спектакль, который подарит вам
-            незабываемые впечатления.
-        </p>
+        <p class="catalog__description">Найдите спектакль, который подарит вам незабываемые впечатления.</p>
 
         <div class="catalog__layout">
-
             <aside class="catalog__sidebar">
-
                 <form class="filters" id="filters-form">
-
                     <h2 class="filters__title">Фильтры</h2>
 
                     <div class="filters__group">
-                        <label class="filters__label" for="search">
-                            Название спектакля
-                        </label>
-
-                        <input
-                            type="search"
-                            id="search"
-                            name="search"
-                            class="filters__input"
-                            placeholder="Поиск спектакля"
-                        >
+                        <label for="search" class="filters__label">Название спектакля</label>
+                        <input type="search" id="search" name="search" class="filters__input" placeholder="Поиск спектакля">
                     </div>
 
                     <div class="filters__group">
-                        <label class="filters__label" for="genre">
-                            Жанр
-                        </label>
-
-                        <select id="genre" name="genre"
-                                class="filters__select">
+                        <label for="genre" class="filters__label">Жанр</label>
+                        <select id="genre" name="genre" class="filters__select">
                             <option value="">Все жанры</option>
                             <option value="drama">Драма</option>
                             <option value="comedy">Комедия</option>
@@ -120,12 +61,8 @@
                     </div>
 
                     <div class="filters__group">
-                        <label class="filters__label" for="duration">
-                            Продолжительность
-                        </label>
-
-                        <select id="duration" name="duration"
-                                class="filters__select">
+                        <label for="duration" class="filters__label">Продолжительность</label>
+                        <select id="duration" name="duration" class="filters__select">
                             <option value="">Любая</option>
                             <option value="short">До 2 часов</option>
                             <option value="medium">2–3 часа</option>
@@ -134,12 +71,8 @@
                     </div>
 
                     <div class="filters__group">
-                        <label class="filters__label" for="age">
-                            Возрастное ограничение
-                        </label>
-
-                        <select id="age" name="age"
-                                class="filters__select">
+                        <label for="age" class="filters__label">Возрастное ограничение</label>
+                        <select id="age" name="age" class="filters__select">
                             <option value="">Любое</option>
                             <option value="0">0+</option>
                             <option value="6">6+</option>
@@ -150,12 +83,8 @@
                     </div>
 
                     <div class="filters__group">
-                        <label class="filters__label" for="country">
-                            Страна
-                        </label>
-
-                        <select id="country" name="country"
-                                class="filters__select">
+                        <label for="country" class="filters__label">Страна</label>
+                        <select id="country" name="country" class="filters__select">
                             <option value="">Все страны</option>
                             <option value="russia">Россия</option>
                             <option value="uk">Великобритания</option>
@@ -164,12 +93,8 @@
                     </div>
 
                     <div class="filters__group">
-                        <label class="filters__label" for="rating">
-                            Минимальный рейтинг
-                        </label>
-
-                        <select id="rating" name="rating"
-                                class="filters__select">
+                        <label for="rating" class="filters__label">Минимальный рейтинг</label>
+                        <select id="rating" name="rating" class="filters__select">
                             <option value="">Любой</option>
                             <option value="4">От 4.0</option>
                             <option value="4.5">От 4.5</option>
@@ -177,137 +102,99 @@
                         </select>
                     </div>
 
-                    <button type="reset"
-                            class="button button--primary filters__reset">
+                    <button type="reset" class="button button--primary filters__reset">
                         Сбросить фильтры
                     </button>
-
                 </form>
-
             </aside>
 
-            <section class="catalog__results"
-                     aria-label="Список спектаклей">
-
+            <section class="catalog__results" aria-label="Список спектаклей">
                 <div class="catalog__toolbar">
-
                     <p class="catalog__count">
                         Найдено спектаклей: <span id="results-count">6</span>
                     </p>
 
                     <div class="catalog__sort">
                         <label for="sort">Сортировать:</label>
-
                         <select id="sort" class="filters__select">
                             <option value="popular">По популярности</option>
                             <option value="rating">По рейтингу</option>
                             <option value="newest">По дате премьеры</option>
                         </select>
                     </div>
-
                 </div>
 
                 <div class="catalog__grid" id="catalog-grid">
 
                     <article class="performance-card">
-                        <img src="images/swan-lake.jpg"
-                             alt="Афиша балета Лебединое озеро"
-                             class="performance-card__image">
-
+                        <img src="images/swan-lake.jpg" alt="Лебединое озеро" class="performance-card__image">
                         <div class="performance-card__content">
-                            <h3 class="performance-card__title">
-                                Лебединое озеро
-                            </h3>
+                            <h3 class="performance-card__title">Лебединое озеро</h3>
                             <p class="performance-card__genre">Балет</p>
-                            <a href="performance.html?id=swan-lake"
-                               class="button button--primary">
-                                Подробнее
-                            </a>
+                            <div class="performance-card__actions">
+                                <a href="performance.html?id=swan-lake" class="button button--primary">Подробнее</a>
+                                <button type="button" class="favorite-button" data-favorite-id="swan-lake">♡ В избранное</button>
+                            </div>
                         </div>
                     </article>
 
                     <article class="performance-card">
-                        <img src="images/cherry-orchard.jpg"
-                             alt="Афиша спектакля Вишнёвый сад"
-                             class="performance-card__image">
-
+                        <img src="images/cherry-orchard.jpg" alt="Вишнёвый сад" class="performance-card__image">
                         <div class="performance-card__content">
-                            <h3 class="performance-card__title">
-                                Вишнёвый сад
-                            </h3>
+                            <h3 class="performance-card__title">Вишнёвый сад</h3>
                             <p class="performance-card__genre">Драма</p>
-                            <a href="performance.html?id=cherry-orchard"
-                               class="button button--primary">
-                                Подробнее
-                            </a>
+                            <div class="performance-card__actions">
+                                <a href="performance.html?id=cherry-orchard" class="button button--primary">Подробнее</a>
+                                <button type="button" class="favorite-button" data-favorite-id="cherry-orchard">♡ В избранное</button>
+                            </div>
                         </div>
                     </article>
 
                     <article class="performance-card">
-                        <img src="images/inspector.jpg"
-                             alt="Афиша спектакля Ревизор"
-                             class="performance-card__image">
-
+                        <img src="images/inspector.jpg" alt="Ревизор" class="performance-card__image">
                         <div class="performance-card__content">
-                            <h3 class="performance-card__title">
-                                Ревизор
-                            </h3>
+                            <h3 class="performance-card__title">Ревизор</h3>
                             <p class="performance-card__genre">Комедия</p>
-                            <a href="performance.html?id=inspector"
-                               class="button button--primary">
-                                Подробнее
-                            </a>
+                            <div class="performance-card__actions">
+                                <a href="performance.html?id=inspector" class="button button--primary">Подробнее</a>
+                                <button type="button" class="favorite-button" data-favorite-id="inspector">♡ В избранное</button>
+                            </div>
                         </div>
                     </article>
 
                     <article class="performance-card">
-                        <img src="images/hamlet.jpg"
-                             alt="Афиша спектакля Гамлет"
-                             class="performance-card__image">
-
+                        <img src="images/hamlet.jpg" alt="Гамлет" class="performance-card__image">
                         <div class="performance-card__content">
-                            <h3 class="performance-card__title">
-                                Гамлет
-                            </h3>
+                            <h3 class="performance-card__title">Гамлет</h3>
                             <p class="performance-card__genre">Драма</p>
-                            <a href="performance.html?id=hamlet"
-                               class="button button--primary">
-                                Подробнее
-                            </a>
+                            <div class="performance-card__actions">
+                                <a href="performance.html?id=hamlet" class="button button--primary">Подробнее</a>
+                                <button type="button" class="favorite-button" data-favorite-id="hamlet">♡ В избранное</button>
+                            </div>
                         </div>
                     </article>
 
                     <article class="performance-card">
-                        <img src="images/nutcracker.jpg"
-                             alt="Афиша балета Щелкунчик"
-                             class="performance-card__image">
-
+                        <img src="images/nutcracker.jpg" alt="Щелкунчик" class="performance-card__image">
                         <div class="performance-card__content">
-                            <h3 class="performance-card__title">
-                                Щелкунчик
-                            </h3>
+                            <h3 class="performance-card__title">Щелкунчик</h3>
                             <p class="performance-card__genre">Балет</p>
-                            <a href="performance.html?id=nutcracker"
-                               class="button button--primary">
-                                Подробнее
-                            </a>
+                            <div class="performance-card__actions">
+                                <a href="performance.html?id=nutcracker" class="button button--primary">Подробнее</a>
+                                <button type="button" class="favorite-button" data-favorite-id="nutcracker">♡ В избранное</button>
+                            </div>
                         </div>
                     </article>
 
                     <article class="performance-card">
-                        <img src="images/phantom.jpg"
-                             alt="Афиша мюзикла Призрак оперы"
-                             class="performance-card__image">
-
+                        <img src="images/phantom.jpg" alt="Призрак оперы" class="performance-card__image">
                         <div class="performance-card__content">
-                            <h3 class="performance-card__title">
-                                Призрак оперы
-                            </h3>
+                            <h3 class="performance-card__title">Призрак оперы</h3>
                             <p class="performance-card__genre">Мюзикл</p>
-                            <a href="performance.html?id=phantom"
-                               class="button button--primary">
-                                Подробнее
-                            </a>
+                            <div class="performance-card__actions">
+                                <a href="performance.html?id=phantom" class="button button--primary">Подробнее</a>
+                                <button type="button" class="favorite-button" data-favorite-id="phantom">♡ В избранное</button>
+                            </div>
                         </div>
                     </article>
 
@@ -316,18 +203,13 @@
                 <p class="catalog__empty" id="catalog-empty" hidden>
                     По вашему запросу спектакли не найдены.
                 </p>
-
             </section>
-
         </div>
     </div>
-
 </main>
 
 <footer class="site-footer">
-    <p class="site-footer__text">
-        © 2026 Театральный мир
-    </p>
+    <p class="site-footer__text">© 2026 Театральный мир</p>
 </footer>
 
 </body>

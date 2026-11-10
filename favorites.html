@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Избранные спектакли сайта Театральный мир.">
+    <title>Избранное — Театральный мир</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/favorites.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="site-header__container">
+        <a href="index.html" class="site-header__logo">
+            Театральный мир
+        </a>
+
+        <nav class="site-nav" aria-label="Основная навигация">
+            <ul class="site-nav__list">
+                <li class="site-nav__item">
+                    <a href="index.html" class="site-nav__link">Главная</a>
+                </li>
+                <li class="site-nav__item">
+                    <a href="catalog.html" class="site-nav__link">Спектакли</a>
+                </li>
+                <li class="site-nav__item">
+                    <a href="genres.html" class="site-nav__link">Жанры</a>
+                </li>
+                <li class="site-nav__item">
+                    <a href="actors.html" class="site-nav__link">Актёры</a>
+                </li>
+                <li class="site-nav__item">
+                    <a href="favorites.html"
+                       class="site-nav__link site-nav__link--active"
+                       aria-current="page">Избранное</a>
+                </li>
+                <li class="site-nav__item">
+                    <a href="reviews.html" class="site-nav__link">Отзывы</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="favorites-page">
+    <div class="container">
+
+        <nav class="breadcrumbs" aria-label="Навигационная цепочка">
+            <a href="index.html">Главная</a>
+            <span aria-hidden="true">/</span>
+            <span>Избранное</span>
+        </nav>
+
+        <h1 class="favorites-page__title">
+            Избранные спектакли
+        </h1>
+
+        <p class="favorites-page__description">
+            Сохраняйте понравившиеся постановки,
+            чтобы быстро возвращаться к ним.
+        </p>
+
+        <div class="favorites-page__toolbar">
+            <p class="favorites-page__count">
+                Сохранено спектаклей:
+                <strong id="favorites-count">0</strong>
+            </p>
+
+            <button class="button button--primary"
+                    id="clear-favorites"
+                    type="button">
+                Очистить избранное
+            </button>
+        </div>
+
+        <div class="favorites-page__grid"
+             id="favorites-grid">
+        </div>
+
+        <div class="favorites-page__empty"
+             id="favorites-empty"
+             hidden>
+            <h2>Здесь пока пусто</h2>
+            <p>
+                Добавьте понравившиеся спектакли
+                из каталога.
+            </p>
+            <a href="catalog.html"
+               class="button button--gold">
+                Перейти в каталог
+            </a>
+        </div>
+
+    </div>
+</main>
+
+<footer class="site-footer">
+    <p class="site-footer__text">© 2026 Театральный мир</p>
+</footer>
+
+</body>
+</html>

@@ -80,19 +80,45 @@ const performance = performances[performanceId];
 if (performance) {
     document.title = `${performance.title} — Театральный мир`;
 
-    document.getElementById("breadcrumb-title").textContent = performance.title;
-    document.getElementById("performance-title").textContent = performance.title;
-    document.getElementById("performance-genre").textContent = performance.genre;
-    document.getElementById("performance-description").textContent = performance.description;
-    document.getElementById("performance-duration").textContent = performance.duration;
-    document.getElementById("performance-age").textContent = performance.age;
-    document.getElementById("performance-author").textContent = performance.author;
-    document.getElementById("performance-country").textContent = performance.country;
-    document.getElementById("performance-about").textContent = performance.about;
+    document.getElementById("breadcrumb-title").textContent =
+        performance.title;
+
+    document.getElementById("performance-title").textContent =
+        performance.title;
+
+    document.getElementById("performance-genre").textContent =
+        performance.genre;
+
+    document.getElementById("performance-description").textContent =
+        performance.description;
+
+    document.getElementById("performance-duration").textContent =
+        performance.duration;
+
+    document.getElementById("performance-age").textContent =
+        performance.age;
+
+    document.getElementById("performance-author").textContent =
+        performance.author;
+
+    document.getElementById("performance-country").textContent =
+        performance.country;
+
+    document.getElementById("performance-about").textContent =
+        performance.about;
 
     const image = document.getElementById("performance-image");
     image.src = performance.image;
     image.alt = `Афиша спектакля ${performance.title}`;
+
+    const favoriteButton = document.getElementById(
+        "performance-favorite"
+    );
+
+    favoriteButton.dataset.favoriteId = performanceId;
+
+    updateFavoriteButtons();
+
 } else {
     document.getElementById("performance-details").innerHTML = `
         <div class="performance-page__not-found">
