@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Описание спектаклей, жанры, продолжительность и информация о постановках.">
+    <title>Спектакль — Театральный мир</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/performance.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="site-header__container">
+        <a href="index.html" class="site-header__logo">
+            Театральный мир
+        </a>
+
+        <nav class="site-nav" aria-label="Основная навигация">
+            <ul class="site-nav__list">
+                <li class="site-nav__item">
+                    <a href="index.html" class="site-nav__link">Главная</a>
+                </li>
+                <li class="site-nav__item">
+                    <a href="catalog.html"
+                       class="site-nav__link site-nav__link--active">
+                        Спектакли
+                    </a>
+                </li>
+                <li class="site-nav__item">
+                    <a href="genres.html" class="site-nav__link">Жанры</a>
+                </li>
+                <li class="site-nav__item">
+                    <a href="actors.html" class="site-nav__link">Актёры</a>
+                </li>
+                <li class="site-nav__item">
+                    <a href="favorites.html" class="site-nav__link">Избранное</a>
+                </li>
+                <li class="site-nav__item">
+                    <a href="reviews.html" class="site-nav__link">Отзывы</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="performance-page">
+    <div class="container">
+
+        <nav class="breadcrumbs" aria-label="Навигационная цепочка">
+            <a href="index.html">Главная</a>
+            <span aria-hidden="true">/</span>
+            <a href="catalog.html">Спектакли</a>
+            <span aria-hidden="true">/</span>
+            <span id="breadcrumb-title">Спектакль</span>
+        </nav>
+
+        <div id="performance-details" class="performance-page__layout">
+
+            <div class="performance-page__poster">
+                <img id="performance-image"
+                     src=""
+                     alt=""
+                     class="performance-page__image">
+            </div>
+
+            <div class="performance-page__info">
+
+                <span class="performance-page__category" id="performance-genre">
+                    Жанр
+                </span>
+
+                <h1 class="performance-page__title" id="performance-title">
+                    Название спектакля
+                </h1>
+
+                <p class="performance-page__description" id="performance-description">
+                    Описание спектакля
+                </p>
+
+                <div class="performance-page__metadata">
+
+                    <div class="performance-page__meta-item">
+                        <span>Продолжительность</span>
+                        <strong id="performance-duration">—</strong>
+                    </div>
+
+                    <div class="performance-page__meta-item">
+                        <span>Возрастное ограничение</span>
+                        <strong id="performance-age">—</strong>
+                    </div>
+
+                    <div class="performance-page__meta-item">
+                        <span>Автор произведения</span>
+                        <strong id="performance-author">—</strong>
+                    </div>
+
+                    <div class="performance-page__meta-item">
+                        <span>Страна происхождения</span>
+                        <strong id="performance-country">—</strong>
+                    </div>
+
+                </div>
+
+                <div class="performance-page__actions">
+                    <a href="catalog.html" class="button button--primary">
+                        Вернуться в каталог
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <section class="performance-page__about">
+            <h2>О спектакле</h2>
+            <p id="performance-about"></p>
+        </section>
+
+        <section class="performance-page__reviews">
+            <h2>Отзывы зрителей</h2>
+            <p>
+                Здесь будут отображаться отзывы и оценки
+                пользователей. Функциональность добавим
+                на этапе разработки JavaScript.
+            </p>
+            <a href="reviews.html" class="performance-page__reviews-link">
+                Перейти к отзывам
+            </a>
+        </section>
+
+    </div>
+</main>
+
+<footer class="site-footer">
+    <p class="site-footer__text">© 2026 Театральный мир</p>
+</footer>
+
+</body>
+</html>
