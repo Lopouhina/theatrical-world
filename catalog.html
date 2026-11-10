@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Каталог театральных спектаклей">
+    <meta name="description" content="Каталог театральных спектаклей с поиском, фильтрацией и сортировкой.">
     <title>Каталог спектаклей — Театральный мир</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/favorites.js" defer></script>
+    <script src="js/catalog.js" defer></script>
 </head>
 <body>
 
@@ -29,6 +30,7 @@
 
 <main class="catalog">
     <div class="container">
+
         <nav class="breadcrumbs" aria-label="Навигационная цепочка">
             <a href="index.html">Главная</a>
             <span aria-hidden="true">/</span>
@@ -36,16 +38,24 @@
         </nav>
 
         <h1 class="catalog__title">Каталог спектаклей</h1>
-        <p class="catalog__description">Найдите спектакль, который подарит вам незабываемые впечатления.</p>
+        <p class="catalog__description">
+            Найдите спектакль, который подарит вам незабываемые впечатления.
+        </p>
 
         <div class="catalog__layout">
+
             <aside class="catalog__sidebar">
                 <form class="filters" id="filters-form">
                     <h2 class="filters__title">Фильтры</h2>
 
                     <div class="filters__group">
                         <label for="search" class="filters__label">Название спектакля</label>
-                        <input type="search" id="search" name="search" class="filters__input" placeholder="Поиск спектакля">
+                        <input
+                            type="search"
+                            id="search"
+                            name="search"
+                            class="filters__input"
+                            placeholder="Поиск спектакля">
                     </div>
 
                     <div class="filters__group">
@@ -64,8 +74,8 @@
                         <label for="duration" class="filters__label">Продолжительность</label>
                         <select id="duration" name="duration" class="filters__select">
                             <option value="">Любая</option>
-                            <option value="short">До 2 часов</option>
-                            <option value="medium">2–3 часа</option>
+                            <option value="short">До 2 часов включительно</option>
+                            <option value="medium">Более 2 до 3 часов</option>
                             <option value="long">Более 3 часов</option>
                         </select>
                     </div>
@@ -109,9 +119,11 @@
             </aside>
 
             <section class="catalog__results" aria-label="Список спектаклей">
+
                 <div class="catalog__toolbar">
                     <p class="catalog__count">
-                        Найдено спектаклей: <span id="results-count">6</span>
+                        Найдено спектаклей:
+                        <span id="results-count">6</span>
                     </p>
 
                     <div class="catalog__sort">
@@ -119,7 +131,7 @@
                         <select id="sort" class="filters__select">
                             <option value="popular">По популярности</option>
                             <option value="rating">По рейтингу</option>
-                            <option value="newest">По дате премьеры</option>
+                            <option value="newest">По году премьеры</option>
                         </select>
                     </div>
                 </div>
@@ -131,6 +143,7 @@
                         <div class="performance-card__content">
                             <h3 class="performance-card__title">Лебединое озеро</h3>
                             <p class="performance-card__genre">Балет</p>
+                            <p class="performance-card__rating">★ 4.9</p>
                             <div class="performance-card__actions">
                                 <a href="performance.html?id=swan-lake" class="button button--primary">Подробнее</a>
                                 <button type="button" class="favorite-button" data-favorite-id="swan-lake">♡ В избранное</button>
@@ -143,6 +156,7 @@
                         <div class="performance-card__content">
                             <h3 class="performance-card__title">Вишнёвый сад</h3>
                             <p class="performance-card__genre">Драма</p>
+                            <p class="performance-card__rating">★ 4.7</p>
                             <div class="performance-card__actions">
                                 <a href="performance.html?id=cherry-orchard" class="button button--primary">Подробнее</a>
                                 <button type="button" class="favorite-button" data-favorite-id="cherry-orchard">♡ В избранное</button>
@@ -155,6 +169,7 @@
                         <div class="performance-card__content">
                             <h3 class="performance-card__title">Ревизор</h3>
                             <p class="performance-card__genre">Комедия</p>
+                            <p class="performance-card__rating">★ 4.6</p>
                             <div class="performance-card__actions">
                                 <a href="performance.html?id=inspector" class="button button--primary">Подробнее</a>
                                 <button type="button" class="favorite-button" data-favorite-id="inspector">♡ В избранное</button>
@@ -167,6 +182,7 @@
                         <div class="performance-card__content">
                             <h3 class="performance-card__title">Гамлет</h3>
                             <p class="performance-card__genre">Драма</p>
+                            <p class="performance-card__rating">★ 4.8</p>
                             <div class="performance-card__actions">
                                 <a href="performance.html?id=hamlet" class="button button--primary">Подробнее</a>
                                 <button type="button" class="favorite-button" data-favorite-id="hamlet">♡ В избранное</button>
@@ -179,6 +195,7 @@
                         <div class="performance-card__content">
                             <h3 class="performance-card__title">Щелкунчик</h3>
                             <p class="performance-card__genre">Балет</p>
+                            <p class="performance-card__rating">★ 4.9</p>
                             <div class="performance-card__actions">
                                 <a href="performance.html?id=nutcracker" class="button button--primary">Подробнее</a>
                                 <button type="button" class="favorite-button" data-favorite-id="nutcracker">♡ В избранное</button>
@@ -191,6 +208,7 @@
                         <div class="performance-card__content">
                             <h3 class="performance-card__title">Призрак оперы</h3>
                             <p class="performance-card__genre">Мюзикл</p>
+                            <p class="performance-card__rating">★ 4.8</p>
                             <div class="performance-card__actions">
                                 <a href="performance.html?id=phantom" class="button button--primary">Подробнее</a>
                                 <button type="button" class="favorite-button" data-favorite-id="phantom">♡ В избранное</button>
@@ -203,6 +221,7 @@
                 <p class="catalog__empty" id="catalog-empty" hidden>
                     По вашему запросу спектакли не найдены.
                 </p>
+
             </section>
         </div>
     </div>

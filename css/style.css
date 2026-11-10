@@ -1099,3 +1099,16 @@ button:disabled {
         max-width: none;
     }
 }
+
+/* Рейтинг спектаклей в каталоге */
+
+.performance-card__rating {
+    color: #b88632;
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 18px;
+}
+
+.catalog__grid .performance-card__actions {
+    margin-top: auto;
+}
